@@ -1,0 +1,137 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --void: #0a0608;
+  --dark: #110d0f;
+  --surface: #1a1318;
+  --surface-raised: #221820;
+  --blood: #8b1a1a;
+  --blood-bright: #b52222;
+  --blood-dim: #5a1010;
+  --ash: #c4b8bc;
+  --ash-dim: #9e9196;
+  --ash-muted: #8a7e82;
+  --ash-faint: #5e5256;
+  --crimson-glow: rgba(139, 26, 26, 0.15);
+  --border: rgba(139, 26, 26, 0.25);
+  --border-subtle: rgba(196, 184, 188, 0.08);
+  --nightshade: #2d1b4e;
+  --nightshade-bright: #6b3fa0;
+  --nightshade-glow: rgba(107, 63, 160, 0.12);
+  --gilt: #c9a84c;
+  --gilt-dim: rgba(201, 168, 76, 0.25);
+  --font-display: 'UnifrakturMaguntia', cursive;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background-color: var(--void);
+  color: var(--ash);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay — aged parchment feel */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Candlelight vignette with cathedral purple tints */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(139,26,26,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse at 10% 0%, rgba(45,27,78,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 0%, rgba(45,27,78,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.6) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.85; }
+}
+
+@keyframes fogDrift {
+  0%   { transform: translateX(-5%) translateY(0); }
+  50%  { transform: translateX(5%) translateY(-2%); }
+  100% { transform: translateX(-5%) translateY(0); }
+}
+
+/* Drifting fog layer */
+#root::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse at 25% 50%, rgba(196, 184, 188, 0.07), transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(196, 184, 188, 0.06), transparent 45%);
+  opacity: 1;
+  animation: fogDrift 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Accessibility ── */
+
+*:focus-visible {
+  outline: 2px solid var(--blood-bright);
+  outline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gilt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,33 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  overflow: hidden;
+}
+
+@keyframes bloodFall {
+  0% {
+    transform: translateY(-50px);
+    opacity: var(--drop-opacity);
+  }
+  85% {
+    opacity: var(--drop-opacity);
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+.drop {
+  position: absolute;
+  top: 0;
+  width: var(--drop-width);
+  height: var(--drop-height);
+  left: var(--drop-left);
+  background: linear-gradient(to bottom, var(--blood-bright), var(--blood));
+  border-radius: 0 0 50% 50%;
+  opacity: 0;
+  animation: bloodFall var(--drop-duration) ease-in var(--drop-delay) forwards;
+}

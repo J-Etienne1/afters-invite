@@ -1,0 +1,69 @@
+.container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 0;
+  height: 0;
+}
+
+/* ── Headstone button ── */
+.headstone {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.35;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform-origin: bottom center;
+}
+
+.headstone:hover {
+  opacity: 0.75;
+  transform: scale(1.1);
+}
+
+.headstone:active {
+  transform: scale(0.95);
+}
+
+/* ── Bat ── */
+@keyframes batFly {
+  0% {
+    transform:
+      rotate(var(--angle))
+      translateX(0px)
+      rotate(calc(-1 * var(--angle)));
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    transform:
+      rotate(calc(var(--angle) + var(--wobble)))
+      translateX(var(--distance))
+      rotate(calc(-1 * (var(--angle) + var(--wobble))));
+    opacity: 0;
+  }
+}
+
+@keyframes batWingFlap {
+  0%, 100% { transform: scaleY(1); }
+  50%       { transform: scaleY(0.6); }
+}
+
+.bat {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  animation: batFly var(--duration) ease-out var(--delay) forwards;
+  pointer-events: none;
+}
+
+.bat svg {
+  animation: batWingFlap 0.2s ease-in-out infinite;
+}
