@@ -52,7 +52,15 @@ export default function AfterPartyPage() {
               data-testid="portrait"
             />
           </div>
-          <figcaption className={styles.portraitCredit}>{portrait.credit}</figcaption>
+          <figcaption className={styles.portraitCredit}>
+            <a
+              href={portrait.creditUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {portrait.credit}
+            </a>
+          </figcaption>
         </figure>
 
         <p className={styles.eyebrow}>{couple.eyebrow}</p>

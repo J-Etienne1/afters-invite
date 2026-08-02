@@ -108,6 +108,7 @@ export const portrait = {
   srcSmall: asset('portrait-800.jpg'),
   alt: 'Illustrated portrait of Debbie and Jason in wedding dress and suit, hands joined over a headstone reading "30.10.27 — Till Death", surrounded by bats and roses.',
   credit: 'Portrait by Loki Pookadubh',
+  creditUrl: 'https://www.instagram.com/loki_pookadubh/',
 }
 
 export const nav = [

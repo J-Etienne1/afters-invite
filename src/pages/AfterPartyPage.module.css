@@ -115,6 +115,11 @@
   color: var(--ash-muted);
 }
 
+.portraitCredit a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .eyebrow {
   font-size: 0.65rem;
   letter-spacing: 0.5em;
