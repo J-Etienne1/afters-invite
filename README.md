@@ -143,12 +143,17 @@ npm run cypress:open  # interactive
 npm run cypress:run   # headless
 ```
 
-The Cypress specs expect a preview server on port 5174:
+Before running Cypress, start the production preview server. The test
+specs are written to visit the compiled site from `dist/` on port 5174,
+not the Vite dev server on port 5173.
 
 ```bash
 npm run build
 npx vite preview --port 5174
 ```
+
+Then open Cypress in another terminal. This ensures Cypress tests the same
+built output that GitHub Pages will serve.
 
 Unlike the unit tests, the Cypress spec has the copy hard-coded (that is the
 point of an end-to-end test), so it **will** need updating when you change
