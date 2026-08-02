@@ -7,10 +7,6 @@ import AfterPartyPage from './pages/AfterPartyPage'
  *
  * No router: the in-page "#details"-style anchors are plain fragments, and a
  * HashRouter would swallow them as route changes.
- *
- * This site is the after-party invite only. The full-day invite (ceremony,
- * dinner, then the party) is a separate repo on a separate link, so neither
- * group of guests can wander into the other's page.
  */
 export default function App() {
   return <AfterPartyPage />
