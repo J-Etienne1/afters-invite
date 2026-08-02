@@ -76,7 +76,7 @@ export const rsvp = {
   // TODO: create a separate after-party form and paste its live URL here.
   // Deliberately NOT the full-day form — that one asks about dinner and
   // dietary requirements, and mixes both headcounts into one spreadsheet.
-  formUrl: 'PLACEHOLDER — set after-party RSVP form URL',
+  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeGid-bxazsXqYfLX3eICcKbAyqKVQil1meKuwHMB8bXvM81A/viewform?usp=publish-editor',
   // TODO: set the real reply-by date.
   deadline: 'PLACEHOLDER — set reply-by date',
   note: "Let us know if you can join us, and whether you're bringing a plus one.",
